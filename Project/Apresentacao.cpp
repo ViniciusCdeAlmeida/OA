@@ -1,14 +1,3 @@
-/**
-* @file interface_impl.c
-* @brief Faz operações de output e input. Trabalhando diretamente com a Lógica de Negócio.
-* @author Charles Cardoso de Oliveira
-* @version 1.4
-* @date Criação: 28/12/2012
-* @date Modificação 1: 02/01/2013
-* @date Modificação 2: 08/01/2013
-* @date Modificação 3: 15/01/2013
-* @date Modificação 4: 03/02/2013
-*/
 
 /* Includes */
 #include "Apresentacao.h"
@@ -18,24 +7,14 @@
 */
 void menu_inicial(){
 
-  
-    printf("******************** SISTEMA DE BLOG *************************\n");
+    printf("********************  Melhores Bandas de Todos os Tempos: *************************\n");
     printf("**************************************************************\n");
    
-    printf("01 - FAZER CADASTRO.\n");
-    printf("02 - ALTERAR CADASTRO.\n");
-    printf("03 - DESCADASTRAR UMA CONTA.\n");
-    printf("04 - FAZER UMA POSTAGEM.\n");
-    printf("05 - COMENTAR UMA POSTAGEM.\n");
-    printf("06 - LISTAR IDENTIFICADORES DOS USUARIOS.\n");
-    printf("07 - LISTAR IDENTIFICADORES DE POSTAGENS.\n");
-    printf("08 - LISTAR TEXTO DE POSTAGENS.\n");
-    printf("09 - LISTAR COMENTARIOS ASSOCIADOS A POSTAGENS.\n");
-    printf("10 - REMOVER COMENTARIOS ASSOCIADOS AS SUAS POSTAGENS.\n");
-    printf("11 - AVALIAR ALGUMA POSTAGEM.\n");
-    printf("12 - FAZER LOGIN.\n");
-    printf("13 - ENCERRAR SECAO (LOGOFF)\n");
-    printf("14 - SAIR DO SISTEMA.\n");
+    printf("01 - Eliminar Banda.\n");
+    printf("02 - Editar Banda.\n");
+    printf("03 - Adicionar Banda.\n");
+    printf("04 - Rank.\n");
+	 printf("05 - Sair do sistema.\n");
     printf("**************************************************************\n");
 }
 
@@ -52,7 +31,7 @@ int opcaoUsuario;
         switch(opcaoUsuario){
             case 1:
                 system("CLS");
-                void cadastro_registro();
+				void deleta_registro();
                 system("PAUSE");
                 system("CLS");
                 menu_inicial();
@@ -66,15 +45,19 @@ int opcaoUsuario;
                 break;
             case 3:
                 system("CLS");
-                void deleta_registro();
+                void cadastro_registro();
                 system("PAUSE");
                 system("CLS");
-               menu_inicial();
+                menu_inicial();
                 break;
-            case 13:
+			 case 4:
                 system("CLS");
+                void lista_resgistro();
+                system("PAUSE");
+                system("CLS");
+                menu_inicial();
                 break;
-            case 14:
+            case 5:
                 system("CLS");
                 printf("O SISTEMA FOI FECHADO COM SUCESSO.\n");
                 system("PAUSE");
@@ -87,7 +70,7 @@ int opcaoUsuario;
                 void menu_inicial();
                 break;
         }
-    }while(opcaoUsuario!=14);
+    }while(opcaoUsuario!=5);
 }
 
 /*
