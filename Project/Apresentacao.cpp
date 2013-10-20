@@ -52,21 +52,21 @@ int opcaoUsuario;
         switch(opcaoUsuario){
             case 1:
                 system("CLS");
-                cadastro_registro();
+                void cadastro_registro();
                 system("PAUSE");
                 system("CLS");
                 menu_inicial();
                 break;
             case 2:
                 system("CLS");
-                altera_registro();
+                void altera_registro();
                 system("PAUSE");
                 system("CLS");
                 menu_inicial();
                 break;
             case 3:
                 system("CLS");
-                deleta_registro();
+                void deleta_registro();
                 system("PAUSE");
                 system("CLS");
                menu_inicial();
@@ -84,7 +84,7 @@ int opcaoUsuario;
                 printf("ERRO: OPCAO ESCOLHIDA NAO EXISTE.\n");
                 system("PAUSE");
                 system("CLS");
-                menu_inicial();
+                void menu_inicial();
                 break;
         }
     }while(opcaoUsuario!=14);
@@ -169,5 +169,7 @@ char novoNomeUsuario[TAM_NOME], novaSenha[TAM_SENHA];
 */
 
 int main(){
+	menu_inicial();
+	opcao_usuario();
 	return 0;
 }
