@@ -77,10 +77,10 @@ int opcaoUsuario;
 Recebe da lógica de Negócio um ponteiro de Listagens contendo todos os Identificadores de Usuario.
 E se a lista não for vazia, imprime todos esses identificadores.
 
-void lista_identificador_usuario(){
+void lista_resgistro(){
 /*Listagens *listagens, *p;
 
- listagens = preenche_listagens_usuario();
+ listagens = lista_resgistro();
     if(listagens==NULL){
     printf("NAO HA NENHUM USUARIO CADASTRADO.\n");
     }
@@ -95,7 +95,7 @@ void lista_identificador_usuario(){
  Passa esses dados para a lógica de negócio.
  E por fim informa ao usuário o resultado.
 
-void cadastro_usuario(){
+void cadastro_registro(){
 /* Declarações 
 char nomeUsuario[TAM_NOME], identificador[TAM_ID], senha[TAM_SENHA];
 int respostaLogica;
@@ -107,19 +107,19 @@ int respostaLogica;
     scanf("%s", senha);
     printf("Digite o seu identificador (ate 5 digitos): ");
     scanf("%s", identificador);
-/*    respostaLogica = preenche_usuario(nomeUsuario, identificador, senha);
-        if(respostaLogica == SUC_FUNCAO){
-        printf("CADASTRO EFETUADO COM SUCESSO.\n");
+/*  respostaLogica = preenche_usuario(nomeUsuario, identificador, senha);
+		if(respostaLogica == SUC_FUNCAO){
+			printf("CADASTRO EFETUADO COM SUCESSO.\n");
         }
         else{
-        printf("IDENTIFICADOR DE USUARIO JA EXISTE. POR FAVOR TENTE NOVAMENTE.\n");
+			printf("IDENTIFICADOR DE USUARIO JA EXISTE. POR FAVOR TENTE NOVAMENTE.\n");
         }
 }
 
 /* Verifica se o usuário está autenticado.
 Se estiver logado o descadastra e altera o estadoUsuario para USUARIO_DESLOGADO.
 
-void descadastro_usuario(int *estadoUsuario){
+void deleta_registro(int *estadoUsuario){
     if(*estadoUsuario == USUARIO_DESLOGADO){
     printf("VOCE PRECISA ESTAR LOGADO PARA EXECUTAR ESSA ACAO.\n");
     }
@@ -134,17 +134,17 @@ void descadastro_usuario(int *estadoUsuario){
 Se estiver recebe as novas informações do usuário e manda para a lógica.
 Imprime resultado.
 
-void altera_cadastro(int *estadoUsuario){
+void altera_registro(int *estadoUsuario){
 char novoNomeUsuario[TAM_NOME], novaSenha[TAM_SENHA];
 
     if(*estadoUsuario == USUARIO_DESLOGADO){
-    printf("VOCE PRECISA ESTAR LOGADO PARA EXECUTAR ESSA ACAO.\n");
+		printf("VOCE PRECISA ESTAR LOGADO PARA EXECUTAR ESSA ACAO.\n");
     }
     else{
-    printf("Digite o novo nome de usuario:");
-    scanf("%s", novoNomeUsuario);
-    printf("Digite a nova senha:");
-    scanf("%s", novaSenha);
+		printf("Digite o novo nome de usuario:");
+		scanf("%s", novoNomeUsuario);
+		printf("Digite a nova senha:");
+		scanf("%s", novaSenha);
     /* repostaLogica = atualiza_usuario(novoUsuario, id, novaSenha); 
     printf("SEUS DADOS FORAM ALTERADOS COM SUCESSO.\n");
     }
