@@ -134,7 +134,7 @@ void deleta_registro(int *estadoUsuario){
 Se estiver recebe as novas informações do usuário e manda para a lógica.
 Imprime resultado.
 
-void altera_cadastro(int *estadoUsuario){
+void altera_registro(int *estadoUsuario){
 char novoNomeUsuario[TAM_NOME], novaSenha[TAM_SENHA];
 
     if(*estadoUsuario == USUARIO_DESLOGADO){

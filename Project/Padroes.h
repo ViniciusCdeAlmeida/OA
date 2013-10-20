@@ -1,7 +1,13 @@
 #ifndef PADROES_H
 #define PADROES_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
 /* Sucesso */
+
 #define SUC_OPERACAO 0
 #define SUC_FUNCAO 0
 #define SUCESSO_LN 1
@@ -12,8 +18,6 @@
 
 /* Erros de existência */
 #define INX_USUARIO -10
-#define INX_POSTAGEM -11
-#define INX_COMENTARIO -12
 
 #define FIM_LISTA -9999
 #define REG_ENABLE "00000"
@@ -25,8 +29,13 @@
 
 #define CTE_CABECALHO 6
 
-/* Status de Usuario */
-#define USUARIO_LOGADO 1
-#define USUARIO_DESLOGADO 0
+/* Constantes de tamanho */
+#define TAM_TITULO 11
+#define TAM_NOME 11
+#define TAM_SENHA 7
+#define TAM_ID 6
+#define TAM_POST 31
+#define TAM_COMENT 21
+
 
 #endif /* CONVENCOES_H */

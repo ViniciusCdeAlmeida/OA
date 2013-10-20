@@ -14,10 +14,14 @@
     <ClCompile Include="Apresentacao.cpp">
       <IgnoreStandardIncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreStandardIncludePath>
     </ClCompile>
+    <ClCompile Include="Logica.c" />
+    <ClCompile Include="Persistencia.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apresentacao.h" />
+    <ClInclude Include="Logica.h" />
     <ClInclude Include="Padroes.h" />
+    <ClInclude Include="Persistencia.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E42DBEB8-E4C8-4855-A33D-E27B5081D061}</ProjectGuid>

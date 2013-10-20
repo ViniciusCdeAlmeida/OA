@@ -24,9 +24,21 @@
     <ClInclude Include="Padroes.h">
       <Filter>Apresetacao</Filter>
     </ClInclude>
+    <ClInclude Include="Logica.h">
+      <Filter>Apresetacao</Filter>
+    </ClInclude>
+    <ClInclude Include="Persistencia.h">
+      <Filter>Apresetacao</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Apresentacao.cpp">
+      <Filter>Apresetacao</Filter>
+    </ClCompile>
+    <ClCompile Include="Logica.c">
+      <Filter>Apresetacao</Filter>
+    </ClCompile>
+    <ClCompile Include="Persistencia.c">
       <Filter>Apresetacao</Filter>
     </ClCompile>
   </ItemGroup>
