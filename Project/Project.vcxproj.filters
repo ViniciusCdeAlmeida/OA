@@ -18,28 +18,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Apresentacao.h">
-      <Filter>Apresetacao</Filter>
-    </ClInclude>
     <ClInclude Include="Padroes.h">
-      <Filter>Apresetacao</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Logica.h">
-      <Filter>Apresetacao</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Persistencia.h">
-      <Filter>Apresetacao</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Apresentacao.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Apresentacao.cpp">
-      <Filter>Apresetacao</Filter>
+    <ClCompile Include="Persistencia.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Logica.c">
-      <Filter>Apresetacao</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Persistencia.c">
-      <Filter>Apresetacao</Filter>
+    <ClCompile Include="Apresentacao.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
