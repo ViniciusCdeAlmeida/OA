@@ -14,6 +14,7 @@
     <ClCompile Include="Apresentacao.cpp">
       <IgnoreStandardIncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreStandardIncludePath>
     </ClCompile>
+    <ClCompile Include="huffman.c" />
     <ClCompile Include="Logica.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -30,6 +31,9 @@
     <ClInclude Include="Persistencia.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lista1.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E42DBEB8-E4C8-4855-A33D-E27B5081D061}</ProjectGuid>
