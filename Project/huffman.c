@@ -2,9 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define NOS 1000
-
-//511
+#define NO 511
 
 int nos_usados = 256;
 
@@ -21,20 +19,19 @@ typedef struct{
 } hufftree;
 
 int achar_baixo(hufftree vet[]){
-    int i=0;
-    int flag = 0;
+    int i, count = 0;
     baixo_simb.parte_baixa_1 = -1;
     baixo_simb.parte_baixa_2 = -1;
 
-    for(i = 0; i < NOS; i++) 
+    for(i = 0; i < NO; i++) 
         if(vet[i].freq){
-            flag++;
+            count++;
             if(baixo_simb.parte_baixa_1 < 0 || vet[i].freq < vet[baixo_simb.parte_baixa_1].freq)
                 baixo_simb.parte_baixa_1 = i;
         }
 
-    if(flag > 1)
-        for(i = 0; i < NOS; i++)
+    if(count > 1)
+        for(i = 0; i < NO; i++)
             if(vet[i].freq && i != baixo_simb.parte_baixa_1)
                 if(baixo_simb.parte_baixa_2 < 0 || vet[i].freq < vet[baixo_simb.parte_baixa_2].freq)
                     baixo_simb.parte_baixa_2 = i;
@@ -42,20 +39,20 @@ int achar_baixo(hufftree vet[]){
     return baixo_simb.parte_baixa_2;
 }
 
-void faz_Htree(int esq, int dir, hufftree vet[]){
+void faz_arvore(int esquerda, int direita, hufftree vet[]){
     int no = nos_usados++;
     
-    vet[no].freq = vet[esq].freq + vet[dir].freq;
-    vet[no].esquerda = esq;
-    vet[no].direita = dir;
-    vet[esq].pai = no;
-    vet[dir].pai = no;
+    vet[no].freq = vet[esquerda].freq + vet[direita].freq;
+    vet[no].esquerda = esquerda;
+    vet[no].direita = direita;
+    vet[esquerda].pai = no;
+    vet[direita].pai = no;
 
-    vet[esq].freq = 0;
-    vet[dir].freq = 0;
+    vet[esquerda].freq = 0;
+    vet[direita].freq = 0;
 }
 
-void escreve(FILE *arquivo_saida, int bit, int flush){
+void escreve_bits(FILE *arquivo_saida, int bit, int flush){
     static int conta_bits = 0;
     static char buff = 0;
  
@@ -81,7 +78,7 @@ void codifica(char *entrada, FILE *arquivo_saida, hufftree vet[]){
     char buff[512], simb[1];
     FILE *arquivo_entrada = fopen(entrada, "rb");
  
-    memset(buff, 0, sizeof(buff));
+	memset(buff, 0, sizeof(buff));
     memset(simb, 0, sizeof(simb));
  
     while(fread(simb, 1, 1, arquivo_entrada)){
@@ -102,10 +99,10 @@ void codifica(char *entrada, FILE *arquivo_saida, hufftree vet[]){
         }
        
         while(buff_p){
-            escreve(arquivo_saida, buff[--buff_p], 0);
+            escreve_bits(arquivo_entrada, buff[--buff_p], 0);
         }
     }
-    escreve(arquivo_saida, 0, 1);
+    escreve_bits(arquivo_entrada, 0, 1);
 }
 
 int pega_bit(FILE *arquivo_entrada){
@@ -131,17 +128,16 @@ void decodifica(char *entrada, char *saida, hufftree tfd[]){
     nos_usados = 256;
 
     while(i < 256){
-        fread(&tfd[i].freq, 1, sizeof(tfd[i].freq), arquivo_saida);
+        fread(&tfd[i].freq, 1, sizeof(tfd[i].freq), arquivo_entrada);
         i++;
     }
 
     while(achar_baixo(tfd) >= 0)
-        faz_Htree(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, tfd);
+        faz_arvore(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, tfd);
 
     raiz = baixo_simb.parte_baixa_1;
 
     i = raiz;
-
     while(!feof(arquivo_entrada)){
         bit = pega_bit(arquivo_entrada);
         if(i < 256){
@@ -163,22 +159,22 @@ int main(int argc, char **argv){
     FILE * entrada;
     FILE * saida;
 
-    hufftree vet[NOS], tfd[NOS];
+    hufftree vet[NO], tfd[NO];
 
     memset(vet, 0, sizeof(vet));
     memset(simb, 0, sizeof(simb));
 
-	if(argc != 4){
-		printf("Argumentos errados.\n");
-		exit(1);
-	}
+        if(argc != 4){
+                printf("Argumentos errados.\n");
+                exit(1);
+        }
 
     if(*argv[1] == 'e'){
         entrada = fopen(argv[2], "rb");
         saida = fopen(argv[3], "wb");
 
         if(!entrada || !saida){
-            printf("Error: can\'t open the file. The program will exit now.\n");
+            printf("Falha na abertura do arquivo.\n");
             exit(1);
         }
         while(fread(simb, 1, 1, entrada))
@@ -191,7 +187,7 @@ int main(int argc, char **argv){
         }
     
         while(achar_baixo(vet) >= 0){
-            faz_Htree(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, vet);
+            faz_arvore(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, vet);
         }
     
         vet[baixo_simb.parte_baixa_1].pai = -1;
@@ -200,10 +196,10 @@ int main(int argc, char **argv){
     }else if(*argv[1] == 'd'){
         decodifica(argv[2], argv[3], tfd);
     }else{
-        printf("Wrong arguments. The program will exit now.\n");
+        printf("Argumentos errados.\n");
         exit(1);
     }
-    printf("Acho que foi.\n");
+    printf("Acho que foi!\n");
     getchar();
     return 0;
 }
