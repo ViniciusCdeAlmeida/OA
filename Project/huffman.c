@@ -21,8 +21,8 @@ typedef struct{
 } hufftree;
 
 int achar_baixo(hufftree vet[]){
-    int i;
-    flag = 0;
+    int i=0;
+    int flag = 0;
     baixo_simb.parte_baixa_1 = -1;
     baixo_simb.parte_baixa_2 = -1;
 
@@ -43,7 +43,7 @@ int achar_baixo(hufftree vet[]){
 }
 
 void faz_Htree(int esq, int dir, hufftree vet[]){
-    int no = no_usado++;
+    int no = nos_usados++;
     
     vet[no].freq = vet[esq].freq + vet[dir].freq;
     vet[no].esquerda = esq;
@@ -76,7 +76,7 @@ void escreve(FILE *arquivo_saida, int bit, int flush){
     }
 }
 
-void codifica(char *inp, FILE *arquivo_saida, hufftree vet[]){
+void codifica(char *entrada, FILE *arquivo_saida, hufftree vet[]){
     unsigned i, buff_p = 0;
     char buff[512], simb[1];
     FILE *arquivo_entrada = fopen(entrada, "rb");
@@ -84,7 +84,7 @@ void codifica(char *inp, FILE *arquivo_saida, hufftree vet[]){
     memset(buff, 0, sizeof(buff));
     memset(simb, 0, sizeof(simb));
  
-    while(fread(simb, 1, 1, entrada)){
+    while(fread(simb, 1, 1, arquivo_entrada)){
         i = simb[0];
         memset(buff, 0, sizeof(buff));
  
@@ -112,8 +112,8 @@ int pega_bit(FILE *arquivo_entrada){
     static int conta_bits = 0;
     static unsigned char bits = 0;
        
-    if(count_bits < 1){
-        fread (&bits, 1, 1, fi);
+    if(conta_bits < 1){
+        fread (&bits, 1, 1, arquivo_entrada);
         conta_bits = 8;
     }
     conta_bits--;
@@ -124,8 +124,8 @@ int pega_bit(FILE *arquivo_entrada){
         return 0;
 }
 
-void decodifica(char *inp, char *out, hufftree tfd[]){
-    int i = 0, root, bit;
+void decodifica(char *entrada, char *saida, hufftree tfd[]){
+    int i = 0, raiz, bit;
     FILE * arquivo_entrada = fopen(entrada, "rb");
     FILE * arquivo_saida = fopen(saida, "wb");
     nos_usados = 256;
@@ -135,37 +135,38 @@ void decodifica(char *inp, char *out, hufftree tfd[]){
         i++;
     }
 
-    while(findLow(tfd) >= 0)
-        faz_Tree(lowsym.low1, lowsym.low2, tfd);
+    while(achar_baixo(tfd) >= 0)
+        faz_Htree(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, tfd);
 
-    root = lowsym.low1;
+    raiz = baixo_simb.parte_baixa_1;
 
-    i = root;
-    while(!feof(input)){
-        bit = getBit(input);
+    i = raiz;
+
+    while(!feof(arquivo_entrada)){
+        bit = pega_bit(arquivo_entrada);
         if(i < 256){
-            fwrite(&i, 1, 1, output);
-            i = root;
+            fwrite(&i, 1, 1, arquivo_saida);
+            i = raiz;
         }
         if(bit)
             i = tfd[i].direita;
         else
             i = tfd[i].esquerda;
     }
-    fclose(input);
-    fclose(output);
+    fclose(arquivo_entrada);
+    fclose(arquivo_saida);
 }
 
 int main(int argc, char **argv){
     int i = 0;
-    char symbol[1];
-    FILE * input;
-    FILE * output;
+    char simb[1];
+    FILE * entrada;
+    FILE * saida;
 
-    htree vet[NODES], tfd[NODES];
+    hufftree vet[NOS], tfd[NOS];
 
     memset(vet, 0, sizeof(vet));
-    memset(symbol, 0, sizeof(symbol));
+    memset(simb, 0, sizeof(simb));
 
 	if(argc != 4){
 		printf("Argumentos errados.\n");
@@ -173,31 +174,31 @@ int main(int argc, char **argv){
 	}
 
     if(*argv[1] == 'e'){
-        input = fopen(argv[2], "rb");
-        output = fopen(argv[3], "wb");
+        entrada = fopen(argv[2], "rb");
+        saida = fopen(argv[3], "wb");
 
-        if(!input || !output){
+        if(!entrada || !saida){
             printf("Error: can\'t open the file. The program will exit now.\n");
             exit(1);
         }
-        while(fread(symbol, 1, 1, input))
-            vet[(int)symbol[0]].freq++;
-        fclose(input);
+        while(fread(simb, 1, 1, entrada))
+            vet[(int)simb[0]].freq++;
+        fclose(entrada);
     
         while(i < 256){
-            fwrite(&vet[i].freq, 1, sizeof(vet[i].freq), output);
+            fwrite(&vet[i].freq, 1, sizeof(vet[i].freq), saida);
             i++;
         }
     
-        while(findLow(vet) >= 0){
-            buildTree(lowsym.low1, lowsym.low2, vet);
+        while(achar_baixo(vet) >= 0){
+            faz_Htree(baixo_simb.parte_baixa_1, baixo_simb.parte_baixa_2, vet);
         }
     
-        vet[lowsym.low1].pai = -1;
-        encode(argv[2], output, vet);
-        fclose(output);
+        vet[baixo_simb.parte_baixa_1].pai = -1;
+        codifica(argv[2], saida, vet);
+        fclose(saida);
     }else if(*argv[1] == 'd'){
-        decode(argv[2], argv[3], tfd);
+        decodifica(argv[2], argv[3], tfd);
     }else{
         printf("Wrong arguments. The program will exit now.\n");
         exit(1);
