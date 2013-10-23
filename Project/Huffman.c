@@ -1,22 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-#define NO 511
+#include "Huffman.h"
 
 int no_usado = 256;
-
-struct parte_baixa{
-    short parte_baixa_1;
-    short parte_baixa_2;
-} baixo_simb;
-
-typedef struct{
-    unsigned freq;
-    int esquerda;
-    int direita;
-    int pai;
-} hufftree;
 
 int achar_baixo(hufftree vet[]){
     int i, conta = 0;
@@ -107,12 +91,12 @@ void codifica(char *arquivo_entrada, FILE *saida, hufftree vet[]){
     escreve_bits(saida, 0, 1);
 }
 
-int Bit_a_Bit(FILE *fi){
+int Bit_a_Bit(FILE *arquivo_entrada){
     static int count_bits = 0;
     static unsigned char bits = 0;
        
     if(count_bits < 1){
-        fread (&bits, 1, 1, fi);
+        fread (&bits, 1, 1, arquivo_entrada);
         count_bits = 8;
     }
     count_bits--;
@@ -167,11 +151,11 @@ int main(int argc, char **argv){
     memset(simb, 0, sizeof(simb));
 
         if(argc != 4){
-                //printf("Wrong arguments. The program will exit now.\n");
+                printf("");
                 exit(1);
         }
 
-    if(*argv[1] == 'e'){
+    if(*argv[1] == 'c'){//(*argv[1] == 'c','o','m','p','r','i','m','e'){
         entrada = fopen(argv[2], "rb");
         saida = fopen(argv[3], "wb");
 
@@ -195,7 +179,7 @@ int main(int argc, char **argv){
         vet[baixo_simb.parte_baixa_1].pai = -1;
         codifica(argv[2], saida, vet);
         fclose(saida);
-    }else if(*argv[1] == 'd'){
+    }else if(*argv[1] == 'd'){//(*argv[1] == 'd','e','s','c','o','m','p'){
         decofica(argv[2], argv[3], tfd);
     }else{
         printf("Argumentos errados\n");
