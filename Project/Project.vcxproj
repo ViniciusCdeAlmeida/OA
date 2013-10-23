@@ -14,14 +14,26 @@
     <ClCompile Include="Apresentacao.cpp">
       <IgnoreStandardIncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreStandardIncludePath>
     </ClCompile>
-    <ClCompile Include="Logica.c" />
-    <ClCompile Include="Persistencia.c" />
+    <ClCompile Include="huffman.c" />
+    <ClCompile Include="Logica.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Persistencia.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apresentacao.h" />
-    <ClInclude Include="Logica.h" />
+    <ClInclude Include="Logica.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Padroes.h" />
-    <ClInclude Include="Persistencia.h" />
+    <ClInclude Include="Persistencia.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lista1.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E42DBEB8-E4C8-4855-A33D-E27B5081D061}</ProjectGuid>
@@ -58,6 +70,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\ViniciusPC\Desktop\Nova pasta\OA-2\Project\Project;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

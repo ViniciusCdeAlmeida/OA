@@ -132,5 +132,5 @@ int recupera_usuario_nrr(int nrr, Usuario *usuario) {
     }
     /* Senão, retorna INX_REGISTRO */
     fclose(arqUsuario);
-    return INX_REGISTRO;
+//    return INX_REGISTRO;
 }

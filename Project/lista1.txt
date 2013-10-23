@@ -1,0 +1,149 @@
+ID001 The Beatles                     Pop rock                  001 
+ID002 Led Zeppelin                    Classic rock              002 
+ID003 The Rolling Stones              Blues Rock                004 
+ID004 Pink Floyd                      Experimental Rock         003 
+ID005 The Who                         Pop rock                  005 
+ID006 Jimi Hendrix                    Blues rock                006 
+ID007 AC/DC                           Blues rock                008 
+ID008 The Doors                       Blues rock                007 
+ID009 Nirvana                         Grunge                    009 
+ID010 Bob Dylan                       Folk                      010 
+ID011 Quenn                           Pop rock                  011 
+ID012 Black Sabbath                   Power metal               012 
+ID013 Creedence Clearwater Revival    Blues rock                013 
+ID014 Eric Clapton                    Blues rock                014 
+ID015 U2                              Pop rock                  015 
+ID016 Pearl Jam                       Grunge                    016 
+ID017 Metallica                       Heavy metal               017 
+ID018 Guns N' Roses                   Glam metal                018 
+ID019 David Bowie                     Psychedelic pop           019 
+ID020 Eagles                          Country pop               020 
+ID021 The Beach Boys                  Psychedelic pop           021 
+ID022 Van Halen                       Glam metal                022 
+ID023 Lynyrd Skynyrd                  Blues rock                023 
+ID024 Elton John                      Pop rock                  024 
+ID025 Red Hot Chili Peppers           Funk rock                 025 
+ID026 Johnny Cash                     Country pop               026 
+ID027 The Police                      Ska punk                  027 
+ID028 Rush                            Progressive Metal         028 
+ID029 Fleetwood Mac                   Blues rock                030 
+ID030 Cream                           Classic rock              029 
+ID031 The Clash                       Punk rock                 031 
+ID032 Radiohead                       Experimental rock         032 
+ID033 John Lennon                     Pop rock                  033 
+ID034 Tom Petty and the Heartbreakers Classic rock              034 
+ID035 Chuck Berry                     Rythm and Blues           035 
+ID036 Ramones                         Punk rock                 036 
+ID037 Deep Purple                     Classic rock              037 
+ID038 ZZ Top                          Blues Rock                038 
+ID039 Neil Young                      Grunge                    039 
+ID040 Simon and Garfunkel             Folk                      041 
+ID041 The Kinks                       Pop rock                  042 
+ID042 Ozzy Osbourne                   Power metal               043 
+ID043 R.E.M.                          Alternative rock          044 
+ID044 Billy Joel                      Pop rock                  045 
+ID045 Foo Fighters                    Post-grunge               046 
+ID046 Aerosmith                       Pop rock                  047 
+ID047 Journey                         Jazz fusion               048 
+ID048 The Allman Brother Band         Blues rock                049 
+ID049 Green Day                       Pop punk                  055 
+ID050 Buddy Holly                     Rockabilly                050 
+ID051 Boston                          Classic rock              053 
+ID052 Kiss                            Glam metal                051 
+ID053 Stevie Ray Vaughan              Blues Rock                052 
+ID054 Santana                         Blues Rock                054 
+ID055 Dire Straits                    Pop rock                  056 
+ID056 Jethro Tull                     Blues rock                057 
+ID057 Def Leppard                     Heavy metal               058 
+ID058 Alice Cooper                    Glam metal                059 
+ID059 Janis Joplin                    Classic rock              060 
+ID060 Genesis                         Pop rock                  061 
+ID061 Yes                             Experimental rock         062 
+ID062 Van Morrison                    Pop rock                  063 
+ID063 Electric Light Orchestra        Pop rock                  064 
+ID064 The Velvet Underground          Blues rock                065 
+ID065 Heart                           Pop rock                  066 
+ID066 Iron Maiden                     Heavy metal               067 
+ID067 Chicago                         Pop rock                  068 
+ID068 Steve Miller Band               Classic rock              069 
+ID069 Bon Jovi                        Pop rock                  070 
+ID070 Grateful Dead                   Blues rock                071 
+ID071 Eric Burdon & the Animals       Blues rock                072 
+ID072 Talking Heads                   Punk funk                 073 
+ID073 Paul McCartney                  Pop rock                  074 
+ID074 Steely Dan                      Jazz fusion               075 
+ID075 Scorpions                       Glam metal                076 
+ID076 Foreigner                       Heavy metal               077 
+ID077 Sex Pistols                     Punk rock                 078 
+ID078 The Band                        Blues rock                079 
+ID079 Rage Against the Machine        Nu metal                  080 
+ID081 The Yardbirds                   Blues rock                081 
+ID082 Alice in Chains                 Grunge                    082 
+ID083 Kansas                          Progressive rock          083 
+ID084 The Smashing Pumpkins           Alternative rock          084 
+ID085 The Byrid                       pop rock                  085 
+ID086 The Cards                       Bubblegum pop             086 
+ID087 Frank Zappa                     Experimental rock         087 
+ID088 Styx                            Heavy metal               088 
+ID089 Rod Stewart                     Pop rock                  089 
+ID090 Otis Redding                    Soul blues                091 
+ID091 Oasis                           Alternative rock          092 
+ID092 The White Stripes               Punk blues                093
+ID093 Blue Oyster Cult                Heavy metal               094
+ID094 Roy Orbison                     Country pop               095
+ID095 Jefferson Airplane              Psychedelic pop           096
+ID096 Elvis Costello                  New wave                  097
+ID097 Judas Priest                    Power metal               098
+ID098 The Cure                        New wave                  099
+ID099 George Harrison                 Pop rock                  100
+ID100 Wings                           Pop rock                  101
+ID101 The Moody Blues                 Synthpop                  102
+ID102 Crosby, Stills, Nash & Young    Folk rock                 103
+ID103 King Crimson                    New wave                  104
+ID104 Pat Benatar                     New wave                  105
+ID105 Thin LIzzy                      Blues rock                106
+ID106 The Mamas & the Papas           Sunshine pop              107
+ID107 Peter Gabriel                   New wave                  108
+ID108 Linkin Park                     Nu metal                  109
+ID109 Cheap Trick                     Pop punk                  110
+ID110 Weezer                          Pop punk                  111
+ID111 Bad Company                     Hard rock                 112
+ID112 Motley Crue                     Glam metal                113
+ID113 Depeche Mode                    Synthpop                  114
+ID114 Blondie                         Pop punk                  115
+ID115 Nine Inch Nails                 Industrial metal          116
+ID116 Steppenwolf                     Hard rock                 117
+ID117 Joan Jett                       Glam punk                 118
+ID118 The Doobie Brothers             Swam pop                  119
+ID119 Soundgarden                     Grunge                    120
+ID120 Coldplay                        Pop rock                  123
+ID121 Pretenders                      New Wave                  122
+ID122 The Guess Who                   Classic rock              121
+ID123 Stone Temple Pilots             Grunge                    124
+ID124 Dio                             Power metal               125
+ID125 John Mellencamp                 Americana                 126
+ID126 Three Dog Night                 Pop rock                  127
+ID127 Freddie Mercury                 Pop rock                  128
+ID128 Paul Simon                      Folk                      129
+ID129 Billy Idol                      New wave                  130
+ID130 Grace Potter and the Nocturnals Blue-eyed soul            131
+ID131 Supertramp                      New wave                  132
+ID132 Joe Cocker                      Blue-eyed soul            133
+ID133 THe Monkees                     Bubblegum pop             134
+ID134 The Smiths                      Jangle pop                135
+ID135 Emerson, Lake & Palmer          Progressive rock          136 
+ID136 Pixies                          Grunge                    137
+ID137 America                         Classic rock              138
+ID138 Phil Collins                    Pop rock                  139
+ID139 Whitesnake                      Glam metal                140
+ID140 Sting                           New wave                  141
+ID141 The Hollies                     Pop rock                  142
+ID142 Lou Reed                        Blue-eyed soul            143
+ID143 Muse                            Space rock                144
+ID144 Grand Funk Railroad             Blues rock                145
+ID145 Jerry Lee Lewis                 Rockabilly                146
+ID146 Robert Plant                    Blues rock                147
+ID147 Tool                            Progressive metal         148
+ID148 Megadeth                        Thrash metal              150
+ID149 Motorhead                       Heavy metal               149
+ID150 Jeff Beck                       Blues rock                151
