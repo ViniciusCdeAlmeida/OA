@@ -4,7 +4,7 @@
 
 #define NO 511
 
-int nos_usados = 256;
+int no_usado = 256;
 
 struct parte_baixa{
     short parte_baixa_1;
@@ -19,69 +19,71 @@ typedef struct{
 } hufftree;
 
 int achar_baixo(hufftree vet[]){
-    int i, count = 0;
+    int i, conta = 0;
     baixo_simb.parte_baixa_1 = -1;
     baixo_simb.parte_baixa_2 = -1;
 
     for(i = 0; i < NO; i++) 
         if(vet[i].freq){
-            count++;
+            conta++;
             if(baixo_simb.parte_baixa_1 < 0 || vet[i].freq < vet[baixo_simb.parte_baixa_1].freq)
                 baixo_simb.parte_baixa_1 = i;
         }
 
-    if(count > 1)
-        for(i = 0; i < NO; i++)
-            if(vet[i].freq && i != baixo_simb.parte_baixa_1)
-                if(baixo_simb.parte_baixa_2 < 0 || vet[i].freq < vet[baixo_simb.parte_baixa_2].freq)
+    if(conta > 1)
+        for(i = 0; i < NO; i++){
+            if(vet[i].freq && i != baixo_simb.parte_baixa_1){
+                if(baixo_simb.parte_baixa_2 < 0 || vet[i].freq < vet[baixo_simb.parte_baixa_2].freq){
                     baixo_simb.parte_baixa_2 = i;
-        
+                }
+            }
+        }
     return baixo_simb.parte_baixa_2;
 }
 
-void faz_arvore(int esquerda, int direita, hufftree vet[]){
-    int no = nos_usados++;
+void faz_arvore(int s1, int s2, hufftree vet[]){
+    int node = no_usado++;
     
-    vet[no].freq = vet[esquerda].freq + vet[direita].freq;
-    vet[no].esquerda = esquerda;
-    vet[no].direita = direita;
-    vet[esquerda].pai = no;
-    vet[direita].pai = no;
+    vet[node].freq = vet[s1].freq + vet[s2].freq;
+    vet[node].esquerda = s1;
+    vet[node].direita = s2;
+    vet[s1].pai = node;
+    vet[s2].pai = node;
 
-    vet[esquerda].freq = 0;
-    vet[direita].freq = 0;
+    vet[s1].freq = 0;
+    vet[s2].freq = 0;
 }
 
-void escreve_bits(FILE *arquivo_saida, int bit, int flush){
-    static int conta_bits = 0;
+void escreve_bits(FILE *saida, int bit, int flush){
+    static int count_bits = 0;
     static char buff = 0;
  
-    if(flush && conta_bits > 0){
-        fwrite(&buff, 1, sizeof(buff), arquivo_saida);
+    if(flush && count_bits > 0){
+        fwrite(&buff, 1, sizeof(buff), saida);
         buff = 0;
-        conta_bits = 0;
+        count_bits = 0;
         return;
     }
 
     if(bit)
-        buff |= 1 << conta_bits;
+        buff |= 1 << count_bits;
  
-    if(++conta_bits >= 8){
-        fwrite(&buff, 1, sizeof(buff), arquivo_saida);
+    if(++count_bits >= 8){
+        fwrite(&buff, 1, sizeof(buff), saida);
         buff = 0;
-        conta_bits = 0;
+        count_bits = 0;
     }
 }
 
-void codifica(char *entrada, FILE *arquivo_saida, hufftree vet[]){
+void codifica(char *arquivo_entrada, FILE *saida, hufftree vet[]){
     unsigned i, buff_p = 0;
     char buff[512], simb[1];
-    FILE *arquivo_entrada = fopen(entrada, "rb");
+    FILE *entrada = fopen(arquivo_entrada, "rb");
  
-	memset(buff, 0, sizeof(buff));
+    memset(buff, 0, sizeof(buff));
     memset(simb, 0, sizeof(simb));
  
-    while(fread(simb, 1, 1, arquivo_entrada)){
+    while(fread(simb, 1, 1, entrada)){
         i = simb[0];
         memset(buff, 0, sizeof(buff));
  
@@ -99,36 +101,36 @@ void codifica(char *entrada, FILE *arquivo_saida, hufftree vet[]){
         }
        
         while(buff_p){
-            escreve_bits(arquivo_entrada, buff[--buff_p], 0);
+            escreve_bits(saida, buff[--buff_p], 0);
         }
     }
-    escreve_bits(arquivo_entrada, 0, 1);
+    escreve_bits(saida, 0, 1);
 }
 
-int pega_bit(FILE *arquivo_entrada){
-    static int conta_bits = 0;
+int Bit_a_Bit(FILE *fi){
+    static int count_bits = 0;
     static unsigned char bits = 0;
        
-    if(conta_bits < 1){
-        fread (&bits, 1, 1, arquivo_entrada);
-        conta_bits = 8;
+    if(count_bits < 1){
+        fread (&bits, 1, 1, fi);
+        count_bits = 8;
     }
-    conta_bits--;
+    count_bits--;
        
-    if ((bits >> (7-conta_bits)) & 1)
+    if ((bits >> (7-count_bits)) & 1)
         return 1;
     else
         return 0;
 }
 
-void decodifica(char *entrada, char *saida, hufftree tfd[]){
+void decofica(char *arquivo_entrada, char *arquivo_saida, hufftree tfd[]){
     int i = 0, raiz, bit;
-    FILE * arquivo_entrada = fopen(entrada, "rb");
-    FILE * arquivo_saida = fopen(saida, "wb");
-    nos_usados = 256;
+    FILE * entrada = fopen(arquivo_entrada, "rb");
+    FILE * saida = fopen(arquivo_saida, "wb");
+    no_usado = 256;
 
     while(i < 256){
-        fread(&tfd[i].freq, 1, sizeof(tfd[i].freq), arquivo_entrada);
+        fread(&tfd[i].freq, 1, sizeof(tfd[i].freq), entrada);
         i++;
     }
 
@@ -138,10 +140,10 @@ void decodifica(char *entrada, char *saida, hufftree tfd[]){
     raiz = baixo_simb.parte_baixa_1;
 
     i = raiz;
-    while(!feof(arquivo_entrada)){
-        bit = pega_bit(arquivo_entrada);
+    while(!feof(entrada)){
+        bit = Bit_a_Bit(entrada);
         if(i < 256){
-            fwrite(&i, 1, 1, arquivo_saida);
+            fwrite(&i, 1, 1, saida);
             i = raiz;
         }
         if(bit)
@@ -149,8 +151,8 @@ void decodifica(char *entrada, char *saida, hufftree tfd[]){
         else
             i = tfd[i].esquerda;
     }
-    fclose(arquivo_entrada);
-    fclose(arquivo_saida);
+    fclose(entrada);
+    fclose(saida);
 }
 
 int main(int argc, char **argv){
@@ -165,7 +167,7 @@ int main(int argc, char **argv){
     memset(simb, 0, sizeof(simb));
 
         if(argc != 4){
-                printf("Argumentos errados.\n");
+                //printf("Wrong arguments. The program will exit now.\n");
                 exit(1);
         }
 
@@ -194,13 +196,12 @@ int main(int argc, char **argv){
         codifica(argv[2], saida, vet);
         fclose(saida);
     }else if(*argv[1] == 'd'){
-        decodifica(argv[2], argv[3], tfd);
+        decofica(argv[2], argv[3], tfd);
     }else{
-        printf("Argumentos errados.\n");
+        printf("Argumentos errados\n");
         exit(1);
     }
     printf("Acho que foi!\n");
     getchar();
     return 0;
 }
-
