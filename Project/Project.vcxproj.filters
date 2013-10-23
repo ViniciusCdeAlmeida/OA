@@ -38,9 +38,6 @@
     <ClCompile Include="Apresentacao.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="huffman.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="lista1.txt" />
