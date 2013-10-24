@@ -39,7 +39,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="lista1.txt" />
-  </ItemGroup>
 </Project>
