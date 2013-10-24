@@ -21,38 +21,7 @@ int inicializa_persistencia_u() {
     return SUC_FUNCAO;
 }
 
-int armazena_usuario(Usuario *usuario) {
-    /* Declaração de Variáveis */
-    int byteOffset, proximo;
-    FILE *arqUsuario;
-    /* Abertura dos arquivos */
-    arqUsuario = fopen(DB_USUARIO, "r+");
-    /* Procura pelo primeiro espaço livre no arquivo de usuários */
-    fscanf(arqUsuario, "%d", &byteOffset);
-    if(byteOffset == FIM_LISTA) { /* Arquivo sem espaços entre os registros */
-        fseek(arqUsuario, 0, SEEK_END); /* Vai para o final do arquivo */
-        proximo = FIM_LISTA;
-    }
-    else {
-        fseek(arqUsuario, byteOffset, SEEK_SET); /* Vai para a posição do registro vago */
-        fscanf(arqUsuario, "%d", &proximo);
-        fseek(arqUsuario, byteOffset, SEEK_SET);
-    }
-    fprintf(arqUsuario, "%s\t", REG_ENABLE);
-    fprintf(arqUsuario, "%.5s\t", usuario->identificador);
-    fprintf(arqUsuario, "%.10s\t", usuario->nome);
-    fprintf(arqUsuario, "%.6s\t", usuario->senha);
-    fprintf(arqUsuario, "%.5d\t", usuario->primPostagem);
-    fprintf(arqUsuario, "%.5d\n", usuario->primComentario);
-    /* Atualiza o próximo espaço vazio no começo do arquivo */
-    fseek(arqUsuario, 0, SEEK_SET);
-    fprintf(arqUsuario, "%.5d", proximo);
-    /* Fechamento dos arquivos */
-    fclose(arqUsuario);
-    return SUC_FUNCAO;
-}
-
-int atualiza_usuario(int nrr, Usuario *usuario) {
+int atualiza_registro(int nrr, Registro *registro) {
     /* Declaração de Variáveis */
     FILE *arqUsuario;
     /* Abertura de arquivos */

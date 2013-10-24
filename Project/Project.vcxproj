@@ -14,7 +14,6 @@
     <ClCompile Include="Apresentacao.cpp">
       <IgnoreStandardIncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreStandardIncludePath>
     </ClCompile>
-    <ClCompile Include="huffman.c" />
     <ClCompile Include="Logica.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -38,6 +37,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E42DBEB8-E4C8-4855-A33D-E27B5081D061}</ProjectGuid>
     <RootNamespace>Project</RootNamespace>
+    <ProjectName>OA (Trab1)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -26,13 +26,6 @@ EXT_PU int inicializa_persistencia_u(void);
 *   @param usuario: informações a serem armazenadas, deve vir preenchido
 *   @return Retorna sucesso ou fracasso
 */
-EXT_PU int armazena_usuario(Usuario *usuario);
-
-/**
-*   @brief Atualiza um usuário pela posição do registro no arquivo
-*   @param nrr: posição do registro do arquivo, usuario: novas informações do registro, deve vir preenchido
-*   @return Retorna sucesso ou fracasso
-*/
 EXT_PU int atualiza_usuario(int nrr, Usuario *usuario);
 
 /**

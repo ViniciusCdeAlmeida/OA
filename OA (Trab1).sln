@@ -1,13 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project", "Project\Project.vcxproj", "{E42DBEB8-E4C8-4855-A33D-E27B5081D061}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentacao", "Apresentacao", "{55514D33-C63B-450B-979E-988267452FD4}"
-	ProjectSection(SolutionItems) = preProject
-		Project\Apresentacao.c = Project\Apresentacao.c
-		Project\Apresentacao.h = Project\Apresentacao.h
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OA (Trab1)", "Project\Project.vcxproj", "{E42DBEB8-E4C8-4855-A33D-E27B5081D061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
